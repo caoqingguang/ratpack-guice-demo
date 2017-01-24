@@ -1,4 +1,4 @@
-package demo.app.ratpack;
+package demo.app.guice;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
@@ -6,9 +6,13 @@ import com.google.inject.name.Names;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Enumeration;
 import java.util.Properties;
 
+import demo.app.handler.LoggingHandler;
+import demo.app.handler.MyHandler;
 import ratpack.handling.HandlerDecorator;
 
 /**
@@ -21,9 +25,10 @@ public class MyModule extends AbstractModule {
     InputStream is=null;
     Properties props=null;
     try {
-      is = AbstractModule.class.getResourceAsStream(config);
+      Path path = Paths.get(config);
+      System.out.println(path);
       props=new Properties();
-      props.load(is);
+      props.load(Class.class.getResourceAsStream(config));
     } catch (IOException e) {
       System.out.println(e);
     }finally {

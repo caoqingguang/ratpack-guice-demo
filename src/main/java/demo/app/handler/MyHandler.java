@@ -1,8 +1,10 @@
-package demo.app.ratpack;
+package demo.app.handler;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import demo.app.service.MyService;
+import demo.app.guice.MyModule;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
@@ -23,6 +25,6 @@ public class MyHandler implements Handler {
 
   @Override
   public void handle(Context context) {
-    context.render("service value: " + myService.getValue());
+    context.render("this is path2, service data " + myService.getDb());
   }
 }

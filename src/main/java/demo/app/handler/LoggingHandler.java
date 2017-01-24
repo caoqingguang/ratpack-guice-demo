@@ -1,5 +1,6 @@
-package demo.app.ratpack;
+package demo.app.handler;
 
+import demo.app.guice.MyModule;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
